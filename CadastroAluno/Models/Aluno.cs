@@ -19,18 +19,14 @@ namespace CadastroAluno.Models
             
         }
 
-        public bool VerificaAprovação()
+        public bool VerificaAprovação() => Media > 5;
+
+
+        public void AtualizaMedia(double novaMedia)
         {
-            if (Media > 5)
-            {
-                return true;
-            }
-
-
-            else
-            {
-                return false;
-            }
+            Media = novaMedia;
         }
+        
+           
     }
 }
