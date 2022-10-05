@@ -134,6 +134,11 @@ namespace CadastroAluno.Controllers
             return View(aluno);
         }
 
+        public Task GetCliente(int v)
+        {
+            throw new NotImplementedException();
+        }
+
         // POST: Alunos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

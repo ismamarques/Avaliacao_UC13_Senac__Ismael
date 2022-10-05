@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAluno", "CadastroAluno\CadastroAluno.csproj", "{38740BF7-4EEA-43C8-958B-3EBEE88A5D94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CadastroAluno", "CadastroAluno\CadastroAluno.csproj", "{38740BF7-4EEA-43C8-958B-3EBEE88A5D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAlunoTeste", "CadastroAlunoTeste\CadastroAlunoTeste.csproj", "{D5B5FF70-2D9E-4189-8C2E-D9652BE20D02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{38740BF7-4EEA-43C8-958B-3EBEE88A5D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38740BF7-4EEA-43C8-958B-3EBEE88A5D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38740BF7-4EEA-43C8-958B-3EBEE88A5D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5B5FF70-2D9E-4189-8C2E-D9652BE20D02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B5FF70-2D9E-4189-8C2E-D9652BE20D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B5FF70-2D9E-4189-8C2E-D9652BE20D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B5FF70-2D9E-4189-8C2E-D9652BE20D02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
