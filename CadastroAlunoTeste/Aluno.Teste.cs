@@ -8,11 +8,13 @@ namespace CadastroAlunoTest
         [Theory]
         [InlineData("Silva", "2")]
         [InlineData("Pedro", "3")]
-        [InlineData("R ", " 2")]
+        [InlineData("R ", "2")]
         [InlineData("Ricardo", "2")]
         [InlineData("Ricardo", "2")]
-        [InlineData(" ", " ")]
+        [InlineData("", " ")]
         [InlineData("", "")]
+
+
         public void AtualizarDados(string nome, string turma)
         {
 
