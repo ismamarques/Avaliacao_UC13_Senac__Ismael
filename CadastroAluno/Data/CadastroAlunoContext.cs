@@ -9,7 +9,7 @@ namespace CadastroAluno.Data
 {
     public class CadastroAlunoContext : DbContext
     {
-        public CadastroAlunoContext (DbContextOptions<CadastroAlunoContext> options)
+        public CadastroAlunoContext(DbContextOptions<CadastroAlunoContext> options)
             : base(options)
         {
         }

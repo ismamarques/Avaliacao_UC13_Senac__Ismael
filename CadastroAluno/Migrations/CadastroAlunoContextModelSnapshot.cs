@@ -19,25 +19,25 @@ namespace CadastroAluno.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("CadastroAluno.Models.Aluno", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Media")
-                        .HasColumnType("float");
+                b.Property<double>("Media")
+                    .HasColumnType("float");
 
-                    b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Nome")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Turma")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Turma")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Aluno");
-                });
+                b.ToTable("Aluno");
+            });
 #pragma warning restore 612, 618
         }
     }

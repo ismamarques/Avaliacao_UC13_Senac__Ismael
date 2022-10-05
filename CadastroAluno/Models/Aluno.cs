@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CadastroAluno.Models
+﻿namespace CadastroAluno.Models
 {
     public class Aluno
     {
@@ -16,17 +11,14 @@ namespace CadastroAluno.Models
         {
             Nome = nome;
             Turma = turma;
-            
         }
 
-        public bool VerificaAprovação() => Media > 5;
-
+        public bool VerificaAprovacao()
+            => Media > 5;
 
         public void AtualizaMedia(double novaMedia)
         {
             Media = novaMedia;
         }
-        
-           
     }
 }

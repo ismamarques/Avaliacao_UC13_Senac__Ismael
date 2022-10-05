@@ -1,69 +1,53 @@
-﻿using CadastroAluno.Models;
-using System;
-using Xunit;
+﻿using Xunit;
+using CadastroAluno.Models;
 
-namespace CadastroAluno.Test
+namespace CadastroAlunoTest
 {
-    public class AlunosTest
+    public class AlunoTest
     {
-        //Cliente cliente = new Cliente("José da Silva", new DateTime(2000, 06, 15), "josesilva@mail.com");
-
-        [Fact]
-        public void Idade_VinteAnosDepois_RetornaVinte()
-        {
-            //Arrange
-            Alunos cliente = new Alunos("José da Silva", DateTime.Now.AddYears(-20), "josesilva@mail.com");
-
-            //Act
-            var idade = aluno.Idade();
-
-            //Assert
-            Assert.Equal(20, idade);
-        }
-
-        [Fact]
-        public void Idade_VinteAnosEUmDiaDepois_RetornaVinte()
-        {
-            //Arrange
-            Alunos aluno = new Alunos("José da Silva", DateTime.Now.AddYears(-20).AddDays(-1), "josesilva@mail.com");
-
-            //Act
-            var idade = aluno.Idade();
-
-            //Assert
-            Assert.Equal(20, idade);
-        }
-
-        [Fact]
-        public void Idade_VinteAnosMenosUmDia_RetornaDezenove()
-        {
-            //Arrange
-            Alunos aluno = new Alunos("José da Silva", DateTime.Now.AddYears(-20).AddDays(1), "josesilva@mail.com");
-
-            //Act
-            var idade = aluno.Idade();
-
-            //Assert
-            Assert.Equal(19, idade);
-        }
-
         [Theory]
-        [InlineData("Joao", "2001-06-15", "joaosilva@mail.com")]
-        [InlineData("", "2001-06-15", "joaosilva@mail.com")]
-        [InlineData("Joao", null, "joaosilva@mail.com")]
-        [InlineData("Joao", "2001-06-15", "")]
-        public void AtualizaDados_AlteraNomeEmailNascimento_RetornaDezenove(string nome, DateTime nascimento, string email)
+        [InlineData("Silva", "2")]
+        [InlineData("Pedro", "3")]
+        [InlineData("R ", " 2")]
+        [InlineData("Ricardo", "2")]
+        [InlineData("Ricardo", "2")]
+        [InlineData(" ", " ")]
+        [InlineData("", "")]
+        public void AtualizarDados(string nome, string turma)
         {
-            //Arrange
-            Alunos cliente = new Alunos("José da Silva", new DateTime(2000, 06, 15), "josesilva@mail.com");
 
-            //Act
-            aluno.AtualizaDados(nome, nascimento, email);
-
-            //Assert
+            Aluno aluno = new Aluno();
+            aluno.AtualizarDados(nome, turma);
             Assert.Equal(aluno.Nome, nome);
-            Assert.Equal(aluno.Nascimeto, nascimento);
-            Assert.Equal(aluno.Email, email);
+            Assert.Equal(aluno.Turma, turma);
+        }
+        [Theory]
+        [InlineData(5)]
+        [InlineData(6)]
+        [InlineData(7)]
+        [InlineData(8)]
+        [InlineData(9)]
+        [InlineData(10)]
+
+        public void VerificarAprovacao_MediaMaior(int n1)
+        {
+            Aluno aluno = new Aluno();
+            aluno.Media = n1;
+            var media = aluno.VerificaAprovacao();
+            Assert.True(media);
+        }
+        [Theory]
+        [InlineData(6)]
+        [InlineData(7)]
+        [InlineData(8)]
+        [InlineData(9)]
+        [InlineData(10)]
+        public void AtualizarDados_Media(double novaMedia)
+        {
+
+            Aluno aluno = new Aluno();
+            aluno.AtualizaMedia(novaMedia);
+            Assert.Equal(aluno.Media, novaMedia);
         }
     }
 }
