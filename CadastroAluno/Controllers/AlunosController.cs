@@ -7,25 +7,36 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CadastroAluno.Data;
 using CadastroAluno.Models;
+using CadastroAluno.Contracts;
+
+
+// Controller Cadastro Aluno 
 
 namespace CadastroAluno.Controllers
 {
     public class AlunosController : Controller
     {
         private readonly CadastroAlunoContext _context;
+        private IAlunoRepository @object;
 
         public AlunosController(CadastroAlunoContext context)
         {
             _context = context;
         }
 
-        // GET: Alunos
+        public AlunosController(IAlunoRepository @object)
+        {
+            this.@object = @object;
+        }
+
+        // GET de  Alunos
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.Aluno.ToListAsync());
         }
 
-        // GET: Alunos/Details/5
+        // GET de  Alunos % 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,15 +54,17 @@ namespace CadastroAluno.Controllers
             return View(aluno);
         }
 
-        // GET: Alunos/Create
+
+        // GET de Alunos Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Alunos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST Alunos e Create
+        
+
+        // Http Post
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Turma,Media")] Aluno aluno)
@@ -65,7 +78,8 @@ namespace CadastroAluno.Controllers
             return View(aluno);
         }
 
-        // GET: Alunos/Edit/5
+
+        // GET: Alunos de Editar 
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,11 +95,18 @@ namespace CadastroAluno.Controllers
             return View(aluno);
         }
 
-        // POST: Alunos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+        // POST: Alunos Editar 
+       
+
+
+
+        // HttpPost
         [HttpPost]
         [ValidateAntiForgeryToken]
+
+
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Turma,Media")] Aluno aluno)
         {
             if (id != aluno.Id)
@@ -116,7 +137,9 @@ namespace CadastroAluno.Controllers
             return View(aluno);
         }
 
-        // GET: Alunos/Delete/5
+        // GET Alunos Deletar 
+
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +157,7 @@ namespace CadastroAluno.Controllers
             return View(aluno);
         }
 
-        // POST: Alunos/Delete/5
+        // POST de  Alunos deletar
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

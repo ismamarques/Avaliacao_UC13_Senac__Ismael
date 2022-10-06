@@ -7,6 +7,9 @@ using CadastroAluno.Models;
 
 namespace CadastroAluno.Data
 {
+
+
+    // Banco , cadastro Aluno
     public class CadastroAlunoContext : DbContext
     {
         public CadastroAlunoContext(DbContextOptions<CadastroAlunoContext> options)

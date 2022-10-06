@@ -1,43 +1,120 @@
-﻿using CadastroAluno.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-
-namespace CadastroAluno.Migrations
+using CadastroAluno.Data;
+using CadastroAluno.Models;
+using CadastroAluno.Contracts;
+namespace CadastroAluno.Controllers
 {
-    [DbContext(typeof(CadastroAlunoContext))]
-    partial class CadastroAlunoContextModelSnapshot : ModelSnapshot
+    public class AlunosController : Controller
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        private readonly IAlunoRepository _context;
+        public AlunosController(IAlunoRepository context)
         {
-#pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.17")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            _context = context;
+        }
 
-            modelBuilder.Entity("CadastroAluno.Models.Aluno", b =>
+        public IActionResult Index()
+        {
+            return View(_context.Index());
+        }
+
+        public IActionResult Details(int id)
+        {
+            if (id == null)
             {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("int")
-                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                return NotFound();
+            }
 
-                b.Property<double>("Media")
-                    .HasColumnType("float");
+            var aluno = _context.Details(id);
+            if (aluno == null)
+            {
+                return NotFound();
+            }
+            return View(aluno);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-                b.Property<string>("Nome")
-                    .HasColumnType("nvarchar(max)");
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Id,Nome,Turma,Media")] Aluno aluno)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Create(aluno);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(aluno);
+        }
 
-                b.Property<string>("Turma")
-                    .HasColumnType("nvarchar(max)");
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-                b.HasKey("Id");
+            var aluno = _context.Details(id);
+            if (aluno == null)
+            {
+                return NotFound();
+            }
+            return View(aluno);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, [Bind("Id,Nome,Turma,Media")] Aluno aluno)
+        {
+            if (id != aluno.Id)
+            {
+                return NotFound();
+            }
 
-                b.ToTable("Aluno");
-            });
-#pragma warning restore 612, 618
+            if (ModelState.IsValid)
+            {
+                _context.Edit(id, aluno);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(aluno);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var aluno = _context.Details(id);
+            if (aluno == null)
+            {
+                return NotFound();
+            }
+            return View(aluno);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var aluno = _context.Details(id);
+            _context.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        private IActionResult AlunoExists(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            return Ok();
         }
     }
 }
