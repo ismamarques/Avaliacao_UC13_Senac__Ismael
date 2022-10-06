@@ -18,11 +18,14 @@ namespace CadastroAluno.Controllers
             _context = context;
         }
 
+        // retornar uma ViewResult
         public IActionResult Index()
         {
             return View(_context.Index());
         }
 
+
+        // Retornar com detalhes
         public IActionResult Details(int id)
         {
             if (id == null)
@@ -37,6 +40,8 @@ namespace CadastroAluno.Controllers
             }
             return View(aluno);
         }
+
+
         public IActionResult Create()
         {
             return View();
@@ -61,7 +66,7 @@ namespace CadastroAluno.Controllers
                 return NotFound();
             }
 
-            var aluno = _context.Details(id);
+            var  aluno = _context.Details((int)id);
             if (aluno == null)
             {
                 return NotFound();
