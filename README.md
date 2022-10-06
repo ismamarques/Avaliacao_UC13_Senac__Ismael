@@ -23,3 +23,15 @@ Anote quais as inconsistências encontradas na model Aluno, mas não a corrija a
     R: Ao executar todos os testes foi encontrado erro no teste VerificaAprovação_MediaMaior , quando a mesma é exatamente
 igual ao valor 5 .
 
+Escreva testes para a controller AlunosController
+O método Index() deve retornar um ViewResult, contendo ou não registros no banco.
+        R: ok , retornando com registros no banco
+        
+        
+O método Index() deve retornar chamar o repositório apenas uma vez.
+
+
+
+
+
+
