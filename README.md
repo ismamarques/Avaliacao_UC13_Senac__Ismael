@@ -29,9 +29,28 @@ O método Index() deve retornar um ViewResult, contendo ou não registros no ban
         
         
 O método Index() deve retornar chamar o repositório apenas uma vez.
+Anote quais as inconsistências encontradas na model Aluno, mas não a corrija ainda. -> "Erros Anotados"
 
 
 
+Escreva testes para a controller AlunosController
+
+O método Index() deve retornar um OkResult, contendo ou não registros no banco. 
+        R: ok 
+O método Index() deve retornar chamar o repositório apenas uma vez. 
+        R: ok , realizado
+        
+O método Details() deve retornar uma BadRequest() para um id nulo, um NotFound() para um um id válido, mas aluno não encontrado no banco e uma ViewResult para um aluno encontrado.
+        R: ok, realizado
+        
+O método Details() deve chamar o repositório apenas uma vez.
+           R: ok, Realizado
+           
+O método Create() deve sempre retornar uma View. -> "Realizado"
+           R: ok , realizado
+           
+O método [HttpPost] Create() deve validar as propriedades da model Aluno, conforme suas regras. Caso válidas, deve chamar uma única vez o repositório e retornar a o RedirectToAction. Caso inválidas, retornar uma View.
+Anote quais as inconsistências encontradas na controller AlunosController, mas não a corrija ainda.
 
 
 
