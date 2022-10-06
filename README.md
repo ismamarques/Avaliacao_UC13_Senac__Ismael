@@ -29,7 +29,9 @@ O método Index() deve retornar um ViewResult, contendo ou não registros no ban
         
         
 O método Index() deve retornar chamar o repositório apenas uma vez.
-Anote quais as inconsistências encontradas na model Aluno, mas não a corrija ainda. -> "Erros Anotados"
+        R: ok realizado.
+Anote quais as inconsistências encontradas na model Aluno, mas não a corrija ainda.
+        R: erros salvos
 
 
 
