@@ -45,7 +45,7 @@ namespace CadastroAlunoTest
             var result = controller.Index();
             Assert.IsType<ViewResult>(result);
         }
-        [Fact(DisplayName = "Chama uma vex Repo)"]
+        [Fact(DisplayName = "Chama uma vex Repo")]
 
         public void ChamaRepositorioUmaVez()
         {
